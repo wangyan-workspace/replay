@@ -1,0 +1,36 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-10-12 18:47:06
+ * @LastEditTime: 2021-10-12 19:32:21
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /replay/防抖和节流/防抖.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id=btn>点我</button>
+
+    <script>
+        function debounce(fn,delay){
+            let timer = null;
+            return function(...args){
+                clearTimeout(timer);
+                timer = setTimeout(()=>{
+                    fn.apply(this,args);
+                },delay);
+            }
+        }
+        var oBtn = document.getElementById("btn");
+        oBtn.onclick = debounce(function(){
+            console.log(Date.now());
+        },2000);
+    </script>
+</body>
+</html>
